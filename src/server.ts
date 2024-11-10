@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import app from './app'
 import config from './config/index'
 
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
   try {
     await mongoose.connect(config.database_url as string)
     console.log('Database connected successfully')
@@ -11,7 +11,7 @@ async function bootstrap() {
       console.log(`application listening on port ${config.port}`)
     })
   } catch (err) {
-    console.log(`😒 failed to connect database`)
+    console.log(`😒 failed to connect database ${err}`)
   }
 }
 
